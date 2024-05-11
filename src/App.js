@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React,{useState} from 'react'
+import './App.css'
+function App(){
+  let store = 10
+  let [counter, updateCounter] = useState(0)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='counter'>
+      <button className='minus' disabled={counter===0} onClick={()=>{
+        if(counter>0){
+          updateCounter(counter-1)
+        }
+      }}>-</button>
+      <p>{counter}</p>
+      <button className='add' disabled={counter===store} onClick={()=>{
+        if(counter<store){
+          updateCounter(counter+1)
+        }
+      }}>+</button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
